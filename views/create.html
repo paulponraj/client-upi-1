@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <script async src="https://cdn.splitbee.io/sb.js"></script>
+    <!-- Coded by Sumanjay @cyberboysumanjay on 5th August 2020 -->
+
+    <!--Let browser know website is optimized for mobile-->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!-- Meta Tags -->
+    <meta name="author" content="Paul Pon Raj">
+    <meta name="description" content="Create UPI Payment Link">
+
+    <link rel="icon" href="https://ik.imagekit.io/pngserver/upiff.png" type="image/png" />
+    <link rel="stylesheet" type="text/css" href="/css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.0.0/animate.min.css" />
+    <title>UPI Payment Link Generator</title>
+
+
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-174919510-1"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+
+        function gtag() {
+            dataLayer.push(arguments);
+        }
+        gtag('js', new Date());
+
+        gtag('config', 'UA-174919510-1');
+    </script>
+
+</head>
+
+<body>
+
+    <div class="card">
+        <div class="banner2">
+            <img height=180px; src="https://ik.imagekit.io/pngserver/upiff.png">
+        </div>
+        <h2 class="create-name">Create UPI Payment Link</h2>
+
+        <p class="create">Unlimited Transcations | Instant Settlement</b></p>
+        <div class="actions">
+            <div class="pay-btn">
+                <input type="text" placeholder="Enter your UPI ID" id="upiid">
+                <input type='number' step='1.0' placeholder="Enter Amount (Optional)" id="amountid">
+                <input type="text" placeholder="Get your UPI Link" id="upilink" hidden disabled>
+                <button onclick=getLink()>
+                    <span class="tooltiptext" id="myTooltip">Create and Copy Link</span>
+                </button>
+                <br><br>
+                <a href="https://play.google.com/store/apps/details?id=com.redmic.hindi">
+                    <button>
+                        <span>Get Red Mic</span>
+                    </button>
+                </a>
+                <br>
+            </div>
+        </div>
+
+        <div class="desc link"> <a href="https://upilink.in">Made with <span class="love">❤️</span> by
+                UPILink.in</a></div>
+
+    </div>
+
+    <script>
+        var baseUrl = window.location.protocol + "//" + window.location.host;
+        var upiid = document.getElementById("upiid");
+        var amountid = document.getElementById("amountid");
+        var upilink = document.getElementById("upilink");
+        var tooltip = document.getElementById("myTooltip");
+        var paragraph = document.getElementsByClassName("create")[0];
+        paragraph.innerHTML = paragraph.innerHTML.replace("https://upayi.ml", baseUrl);
+        function getLink() {
+            if (upiid.value.indexOf("@") != -1) {
+                var amount = "";
+                console.log(amountid.value);
+                console.log(amountid.value.length);
+                console.log(typeof (amountid.value))
+                if (isNumeric(amountid.value)) {
+                    amount = "/" + amountid.value;
+                }
+                upilink.value = baseUrl + "/" + upiid.value + amount;
+                upilink.style.display = "block";
+                navigator.clipboard.writeText(upilink.value);
+                var copyText = document.getElementById("upilink");
+                tooltip.innerHTML = "Copied to Clipboard!";
+            } else {
+                tooltip.innerHTML = "Enter Valid UPI ID";
+            }
+        }
+
+        function isNumeric(n) {
+            return !isNaN(parseFloat(n)) && isFinite(n);
+        }
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <script async src="https://cdn.splitbee.io/sb.js"></script>
+    <!-- Coded by Sumanjay @cyberboysumanjay on 5th August 2020 -->
+
+    <!--Let browser know website is optimized for mobile-->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!-- Meta Tags -->
+    <meta name="author" content="Sumanjay">
+    <meta name="description" content="Create Payment Link of your UPI ID!">
+    <link rel="icon" href="https://ik.imagekit.io/pngserver/upiff.png" type="image/png" />
+    <link rel="stylesheet" type="text/css" href="/css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.0.0/animate.min.css" />
+    <title>UPI Payment Link</title>
+
+
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-174919510-1"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+
+        function gtag() {
+            dataLayer.push(arguments);
+        }
+        gtag('js', new Date());
+
+        gtag('config', 'UA-174919510-1');
+    </script>
+</head>
+
+<body>
+
+    <div class="card">
+        <div class="banner">
+            <img height=360px; src="/qr/{{ id }}/{{ amount }}">
+        </div>
+        {% if amount %}
+        <h2 class="name animate__animated animate__tada">Paying ₹{{ amount }} to {{ id }}</h2>
+        {% else %}
+        <h2 class="name animate__animated animate__tada">Paying to {{ id }}</h2>
+        {% endif %}
+        <div class="title">Scan & Pay using any UPI App
+            <br><br>
+            <img height="36px" src="https://ik.imagekit.io/pngserver/Untitled%20design%20-%202024-04-26T201409.734.png">
+            <img height="36px" src="https://ik.imagekit.io/pngserver/Untitled%20design%20-%202024-04-26T202218.929.png">
+            <img height="36px" src="https://ik.imagekit.io/pngserver/Untitled%20design%20-%202024-04-26T201822.176.png">
+
+        </div>
+
+        <div class="actions">
+            <div class="pay-btn">
+                {% if amount %}
+                <a href="upi://pay?pn=via UPILink.in&pa={{ id }}&cu=INR&am={{ amount }}"> <button>Pay Now</button></a>
+                {% else %}
+                <a href="upi://pay?pn=via UPILink.in&pa={{ id }}&cu=INR"> <button>Pay Now</button></a>
+                {% endif %}
+                <br><br>
+                <a href="/"> <button>Create your UPI Link</button></a>
+                <br>
+            </div>
+        </div>
+
+        <div class="desc link"> <a href="https://upilink.in">Made with <span class="love">❤️</span> by
+                UPILink.in</a></div>
+
+        <div class="desc link"> <a href="#">Watch Video <span class="love">▶️</span>
+                Tutorial</a></div>
+
+    </div>
+
+</body>
+
+</html>
